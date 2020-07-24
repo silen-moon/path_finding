@@ -1,40 +1,36 @@
-/**
- * The pathfinding visualization.
- * It uses raphael.js to show the grids.
- */
 var View = {
-    nodeSize: 30, // width and height of a single node, in pixel
+    nodeSize: 35, // width and height of a single node, in pixel
     nodeStyle: {
         normal: {
-            fill:  'rgb(178, 91, 250)',
-            'stroke-opacity': 0.4, // the border
+            fill:  'rgb(40,45,79)',
+            'stroke-opacity': 0.6, // the border
         },
         blocked: {
-            fill: '#ddd',
+            fill: 'silver',
             'stroke-opacity': 0.2,
         },
         start: {
-            fill: 'rgb(182, 5, 5)',
+            fill: 'rgb(255, 255, 0)',
             'stroke-opacity': 0.2,
         },
         end: {
-            fill: ' whitesmoke',
+            fill: 'rgb(35,234,222)',
             'stroke-opacity': 0.2,
         },
         opened: {
-            fill: 'orange',
+            fill: '#b941d8',
             'stroke-opacity': 0.2,
         },
         closed: {
-            fill: '#333',
+            fill: '#eb66c4',
             'stroke-opacity': 0.2,
         },
         failed: {
-            fill: '#ff8888',
+            fill: '#28b463',
             'stroke-opacity': 0.2,
         },
         tested: {
-            fill: '#e5e5e5',
+            fill: 'orange',
             'stroke-opacity': 0.2,
         },
     },

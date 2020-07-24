@@ -1,21 +1,8 @@
 /**
  * The control panel.
  */
-var ourinput;
-function record() {
-    var recognition = new webkitSpeechRecognition();
-    recognition.lang = "en-GB";
-
-    recognition.onresult = function(event) {
-        // console.log(event);
-        document.getElementById('speechToText').value = event.results[0][0].transcript;
-        console.log(document.getElementById('speechToText').value);
-        ourinput = document.getElementById('speechToText').value;
-    }
-    recognition.start();
-}
-// console.log(ourinput);
 var Panel = {
+    
     init: function() {
         var $algo = $('#algorithm_panel');
 
@@ -29,10 +16,14 @@ var Panel = {
         $('#hide_instructions').click(function() {
             $('#instructions_panel').slideUp();
         });
+        $('#hide_detail').click(function() {
+            $('#detail_panel').slideUp();
+        });
         $('#play_panel').css({
             top: $algo.offset().top + $algo.outerHeight() + 20
         });
         $('#button2').attr('disabled', 'disabled');
+       
     },
     /**
      * Get the user selected path-finder.
@@ -45,8 +36,8 @@ var Panel = {
             '#algorithm_panel ' +
             '.ui-accordion-header[aria-selected=true]'
         ).attr('id');
-        console.log(ourinput);
-        switch (ourinput) {
+        
+        switch (selected_header) {
 
         case 'astar_header':
             allowDiagonal = typeof $('#astar_section ' +
@@ -85,6 +76,7 @@ var Panel = {
                                      '.bi-directional:checked').val() !== 'undefined';
             dontCrossCorners = typeof $('#breadthfirst_section ' +
                                      '.dont_cross_corners:checked').val() !=='undefined';
+                                     
             if (biDirectional) {
                 finder = new PF.BiBreadthFirstFinder({
                     allowDiagonal: allowDiagonal,
@@ -97,6 +89,27 @@ var Panel = {
                 });
             }
             break;
+        
+            case 'depthfirst_header':
+                allowDiagonal = typeof $('#depthfirst_section ' +
+                                         '.allow_diagonal:checked').val() !== 'undefined';
+                biDirectional = typeof $('#depthfirst_section ' +
+                                         '.bi-directional:checked').val() !== 'undefined';
+                dontCrossCorners = typeof $('#depthfirst_section ' +
+                                         '.dont_cross_corners:checked').val() !=='undefined';
+                                         
+                if (biDirectional) {
+                    finder = new PF.BiDepthFirstFinder({
+                        allowDiagonal: allowDiagonal,
+                        dontCrossCorners: dontCrossCorners
+                    });
+                } else {
+                    finder = new PF.DepthFirstFinder({
+                        allowDiagonal: allowDiagonal,
+                        dontCrossCorners: dontCrossCorners
+                    });
+                }
+                break;    
 
         case 'bestfirst_header':
             allowDiagonal = typeof $('#bestfirst_section ' +
@@ -149,7 +162,7 @@ var Panel = {
             finder = new PF.JumpPointFinder({
               trackJumpRecursion: trackRecursion,
               heuristic: PF.Heuristic[heuristic],
-              diagonalMovement: PF.DiagonalMovement.IfAtMostOneObstacle
+            //   diagonalMovement: PF.DiagonalMovement.IfAtMostOneObstacle
             });
             break;
         case 'orth_jump_point_header':
@@ -160,7 +173,7 @@ var Panel = {
             finder = new PF.JumpPointFinder({
               trackJumpRecursion: trackRecursion,
               heuristic: PF.Heuristic[heuristic],
-              diagonalMovement: PF.DiagonalMovement.Never
+            //   diagonalMovement: PF.DiagonalMovement.Never
             });
             break;
         case 'ida_header':
@@ -191,6 +204,25 @@ var Panel = {
             });
 
             break;
+        
+        case 'trace_header':
+            allowDiagonal = typeof $('#trace_section ' +
+                                     '.allow_diagonal:checked').val() !== 'undefined';
+            biDirectional = typeof $('#trace_section ' +
+                                     '.bi-directional:checked').val() !=='undefined';
+            dontCrossCorners = typeof $('#trace_section ' +
+                                     '.dont_cross_corners:checked').val() !=='undefined';
+
+            heuristic = $('input[name=trace_heuristic]:checked').val();
+
+            finder = new PF.TraceFinder({
+                allowDiagonal: allowDiagonal,
+                dontCrossCorners: dontCrossCorners,
+                heuristic: PF.Heuristic[heuristic]
+            });
+
+            break;
+
         }
 
         return finder;

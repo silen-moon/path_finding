@@ -5,43 +5,29 @@
     <title>PathFinding.js</title>
 
     <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./lb/themes/jquery.ui.all.css" />
+    <link rel="stylesheet" href="./lib/themes/jquery.ui.all.css" />
+    
+    <script type="text/javascript" src="./lib/raphael-min.js"></script>
+    <script type="text/javascript" src="./lib/es5-shim.min.js"></script>
+    <script type="text/javascript" src="./lib/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="./lib/state-machine.min.js"></script>
+    <script type="text/javascript" src="./lib/async.min.js"></script>
 
-    <script type="text/javascript" src="./lb/raphael-min.js"></script>
-    <script type="text/javascript" src="./lb/es5-shim.min.js"></script>
-    <script type="text/javascript" src="./lb/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript" src="./lb/state-machine.min.js"></script>
-    <script type="text/javascript" src="./lb/async.min.js"></script>
+    <script type="text/javascript" src="./lib/ui/jquery.ui.core.min.js"></script>
+    <script type="text/javascript" src="./lib/ui/jquery.ui.widget.min.js"></script>
+    <script type="text/javascript" src="./lib/ui/jquery.ui.mouse.min.js"></script>
+    <script type="text/javascript" src="./lib/ui/jquery.ui.draggable.min.js"></script>
+    <script type="text/javascript" src="./lib/ui/jquery.ui.accordion.min.js"></script>
+    <script type="text/javascript" src="./lib/ui/jquery.ui.slider.min.js"></script>
 
-    <script type="text/javascript" src="./lb/ui/jquery.ui.core.min.js"></script>
-    <script type="text/javascript" src="./lb/ui/jquery.ui.widget.min.js"></script>
-    <script type="text/javascript" src="./lb/ui/jquery.ui.mouse.min.js"></script>
-    <script type="text/javascript" src="./lb/ui/jquery.ui.draggable.min.js"></script>
-    <script type="text/javascript" src="./lb/ui/jquery.ui.accordion.min.js"></script>
-    <script type="text/javascript" src="./lb/ui/jquery.ui.slider.min.js"></script>
-
-    <script type="text/javascript" src="./lb/pathfinding-browser.min.js"></script>
+    <script type="text/javascript" src="./lib/pathfinding-browser.min.js"></script>
 
     <script type="text/javascript" src="./js/view.js"></script>
     <script type="text/javascript" src="./js/controller.js"></script>
     <script type="text/javascript" src="./js/panel.js"></script>
     <script type="text/javascript" src="./js/main.js"></script>
-    <script type="text/jacascript" src="./js/panel.js"></script>
-    <script type="text/jacascript" src="./js/panel1.js"></script>
-    <!-- Below is the script for voice recognition and conversion to text-->
-    <!-- <script>
-      function record() {
-          var recognition = new webkitSpeechRecognition();
-          recognition.lang = "en-GB";
+    
 
-          recognition.onresult = function(event) {
-              // console.log(event);
-              document.getElementById('speechToText').value = event.results[0][0].transcript;
-          }
-          recognition.start();
-
-      }
-  </script> -->
   </head>
   <body>
     <div id="draw_area"></div>
@@ -51,20 +37,40 @@
         <h2 class="header_title">Instructions</h2>
         <span id="hide_instructions">hide</span>
       </header>
-      Click within the <span class="purple">purple</span> grid and drag your mouse to draw obstacles. <br>
-      Drag the <span class="red">red</span> node to set the start position. <br>
-      Drag the <span class="white">white</span> node to set the end position. <br>
+      Click within the <span class="black">blue</span> grid and drag your mouse to draw obstacles. <br>
+      Drag the <span class="yellow">yellow</span> node to set the start position. <br>
+      Drag the <span class="blue">cyan</span> node to set the end position. <br>
+      Click on the speak button and speak the code for chose algorithm. <br>
       Choose an algorithm from the right-hand panel. <br>
       Click Start Search in the lower-right corner to start the animation.
     </div>
+    
+    <div id="detail_panel" class="panel">
+      <header>
+        <h2 class="header_title">Algorithms Details</h2>
+        <span id="hide_detail">hide</span>
+      </header>
+      <span class="yellow">Code : hello 1 --- </span> <a href="https://en.wikipedia.org/wiki/A*_search_algorithm" target="_blank" style="color:whitesmoke">A*</a> &nbsp;&nbsp;<br>
+      <span class="yellow">Code : hello 2 --- </span> <a href="https://en.wikipedia.org/wiki/Jump_point_search" target="_blank" style="color:whitesmoke">Jump-Point-Search</a> &nbsp;&nbsp;<br>
+      <span class="yellow">Code : hello 6 --- </span> <a href="https://en.wikipedia.org/wiki/Iterative_deepening_A*" target="_blank" style="color:whitesmoke">IDA*</a>&nbsp;&nbsp;<br>
+      <span class="yellow">Code : hello --- </span> <a href="https://en.wikipedia.org/wiki/Breadth-first_search" target="_blank" style="color:whitesmoke">Breadth-First-Search</a>&nbsp;&nbsp;<br>
+      <span class="yellow">Code : hello 3 --- </span> <a href="https://en.wikipedia.org/wiki/Depth-first_search" target="_blank" style="color:whitesmoke">Depth-First-Search</a>&nbsp;&nbsp;<br>
+      <span class="yellow">Code : hello 4 --- </span> <a href="https://en.wikipedia.org/wiki/Best-first_search" target="_blank" style="color:whitesmoke">Best-First-Search</a>&nbsp;&nbsp;<br>
+      <span class="yellow">Code : hello 7 --- </span> <a href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm" target="_blank" style="color:whitesmoke">Dijkstra</a>&nbsp;&nbsp;<br>
+      <span class="yellow">Code : hello 5 --- </span> <a href="https://github.com/Yonaba/Jumper/issues/20" target="_blank" style="color:whitesmoke">O-J-P-Search</a> &nbsp;&nbsp;<br>
+      <span class="yellow">Code : hello 9 --- </span> <a href="https://github.com/Yonaba/Jumper/issues/26" target="_blank" style="color:whitesmoke">Trace-Search</a>&nbsp;&nbsp;<br>
+      <a href="https://en.wikipedia.org/wiki/Heuristic_(computer_science)" target="_blank" style="color:whitesmoke">Heuristic functions</a> &nbsp;&nbsp;<br>
+      <a href="https://en.wikipedia.org/wiki/Admissible_heuristic" target="_blank" style="color:whitesmoke">Manhattan</a>&nbsp;&nbsp;<br>
+      <a href="https://en.wikipedia.org/wiki/Euclidean_distance" target="_blank" style="color:whitesmoke">Euclidean</a>&nbsp;&nbsp;<br>
+      <a href="https://en.wikipedia.org/wiki/Chebyshev_distance" target="_blank" style="color:whitesmoke">Chebyshev</a>&nbsp;&nbsp;<br>
+      <a href="http://theory.stanford.edu/~amitp/GameProgramming/Heuristics.html" target="_blank" style="color:whitesmoke">Octile</a><br>
 
- 
-
-
+    </div>
+<!-- <div class="widget-content"> -->
     <div id="algorithm_panel" class="panel right_panel">
+      
       <header><h2 class="header_title">Select Algorithm</h2></header>
-      <label for="Speech Recognition">Speech Recognition</label>
-      <input type="text" name="" id="speechToText" placeholder="Speak Something" onclick="record()">
+      
       <div class="accordion">
         <h3 id="astar_header"><a href="#">A*</a></h3>
         <div id="astar_section" class="finder_section">
@@ -144,6 +150,21 @@
           </div>
         </div>
 
+        <h3 id="depthfirst_header"><a href="#">Depth-First-Search</a></h3>
+        <div id="depthfirst_section" class="finder_section">
+          <header class="option_header">
+            <h3>Options</h3>
+          </header>
+          <div class="optional sub_options">
+            <input type="checkbox" class="allow_diagonal" checked>
+            <label class="option_label">Allow Diagonal</label> <br>
+            <input type="checkbox" class="bi-directional">
+            <label class="option_label">Bi-directional</label> <br>
+            <input type="checkbox" class="dont_cross_corners">
+            <label class="option_label">Don't Cross Corners</label> <br>
+          </div>
+        </div>
+
         <h3 id="bestfirst_header"><a href="#">Best-First-Search</a></h3>
         <div id="bestfirst_section" class="finder_section">
           <header class="option_header">
@@ -187,7 +208,7 @@
             <label class="option_label">Don't Cross Corners</label> <br>
           </div>
         </div>
-
+        
         <h3 id="jump_point_header"><a href="#">Jump Point Search</a></h3>
         <div id="jump_point_section" class="finder_section">
           <header class="option_header">
@@ -198,8 +219,6 @@
             <label class="option_label">Manhattan</label> <br>
             <input type="radio" name="jump_point_heuristic" value="euclidean"/>
             <label class="option_label">Euclidean</label> <br>
-            <input type="radio" name="jump_point_heuristic" value="octile"/>
-            <label class="option_label">Octile</label> <br>
             <input type="radio" name="jump_point_heuristic" value="chebyshev"/>
             <label class="option_label">Chebyshev</label> <br>
           </div>
@@ -212,7 +231,7 @@
           </div>
         </div>
 
-	<h3 id="orth_jump_point_header"><a href="#">Orthogonal Jump Point Search</a></h3>
+		<h3 id="orth_jump_point_header"><a href="#">Orthogonal Jump Point Search</a></h3>
         <div id="orth_jump_point_section" class="finder_section">
           <header class="option_header">
             <h3>Heuristic</h3>
@@ -222,8 +241,6 @@
             <label class="option_label">Manhattan</label> <br>
             <input type="radio" name="orth_jump_point_heuristic" value="euclidean"/>
             <label class="option_label">Euclidean</label> <br>
-            <input type="radio" name="orth_jump_point_heuristic" value="octile"/>
-            <label class="option_label">Octile</label> <br>
             <input type="radio" name="orth_jump_point_heuristic" value="chebyshev"/>
             <label class="option_label">Chebyshev</label> <br>
           </div>
@@ -233,6 +250,32 @@
           <div class="optional sub_options">
             <input type="checkbox" class="track_recursion" checked>
             <label class="option_label">Visualize recursion</label> <br>
+          </div>
+        </div>
+
+        <h3 id="trace_header"><a href="#">Trace</a></h3>
+        <div id="trace_section" class="finder_section">
+          <header class="option_header">
+            <h3>Heuristic</h3>
+          </header>
+          <div id="trace_heuristic" class="sub_options">
+            <input type="radio" name="trace_heuristic" value="manhattan" checked />
+            <label class="option_label">Manhattan</label> <br>
+            <input type="radio" name="trace_heuristic" value="euclidean"/>
+            <label class="option_label">Euclidean</label> <br>
+            <input type="radio" name="trace_heuristic" value="octile"/>
+            <label class="option_label">Octile</label> <br>
+            <input type="radio" name="trace_heuristic" value="chebyshev"/>
+            <label class="option_label">Chebyshev</label> <br>
+          </div>
+          <header class="option_header">
+            <h3>Options</h3>
+          </header>
+          <div class="optional sub_options">
+            <input type="checkbox" class="allow_diagonal" checked>
+            <label class="option_label">Allow Diagonal</label> <br>
+            <input type="checkbox" class="dont_cross_corners">
+            <label class="option_label">Don't Cross Corners</label> <br>
           </div>
         </div>
 
@@ -247,8 +290,11 @@
 
     <div id="stats"></div>
 
+  
+
     <footer>
-      Project </a>
+      <label for="Speech Recognition">Click Here</label>
+      <input type="text" name="" id="speechToText" placeholder="Speak Something" onclick="record()">
     </footer>
 
   </body>

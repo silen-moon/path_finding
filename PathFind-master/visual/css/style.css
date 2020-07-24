@@ -2,7 +2,6 @@ body {
     padding: 0px;
     margin: 0px;
     overflow: hidden;
-    background-color: black;
 }
 
 input {
@@ -25,17 +24,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .panel {
     position: fixed;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.6);
-    color: rgb(255, 217, 0);
+    padding: 15px;
+    background-color: rgba(3, 9, 15, 0.75);
+    color: #fff;
     border-radius: 8px;
-    box-shadow: 5px 5px 10px rgba(95, 95, 95, 0.5);
+    box-shadow: 5px 5px 10px rgb(0, 247, 255);
     cursor: default;
 }
 
 .right_panel {
     width: 250px;
-    right: 20px;
+    right: 10px;
 }
 
 #algorithm_panel {
@@ -44,9 +43,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #instructions_panel {
-    top: 20px;
+    top: 10px;
     left: 20px;
-    width: 550px;
+    width: 450px;
+}
+
+#detail_panel {
+    top: 200px;
+    left: 20px;
+    width: 250px;
+}
+
+#hide_detail {
+    position: absolute;
+    right: 25px;
+    top: 10px;
+    font-size: 90%;
+    cursor: pointer;
 }
 
 #hide_instructions {
@@ -58,7 +71,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hide_instruction:hover {
-    color: rgb(255, 255, 255);
+    color: #fff;
     text-decoration: underline;
 }
 
@@ -73,7 +86,7 @@ h1, h2, h3, h4, h5, h6 {
 
 button {
     border: none;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255,255,0, 0.9);
     border-radius: 5px;
     font-size: 90%;
     cursor: pointer;
@@ -100,21 +113,21 @@ button:hover {
 
 #stats {
     position: fixed;
-    bottom: 40px;
-    left: 35px;
-    color: rgb(0, 10, 70);
-    font-size: 85%;
-    padding: 5px;
+    bottom: 50px;
+    left: 45px;
+    color: maroon;
+    font-size: 95%;
+    padding: 6px;
     background: rgba(255, 255, 255, 0.5);
-    border-radius: 5px;
+    border-radius: 6px;
 }
 
 a {
-    color: rgb(251, 255, 28);
+    color: #ffff00;
 }
 
 footer {
-    color: #333;
+    color: rgb(247, 251, 0);
     font-size: 70%;
     text-align: center;
     position: fixed;
@@ -122,21 +135,21 @@ footer {
     bottom: 10px;
     left: 50%;
     margin-left: -100px;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.205);
     padding: 5px;
-    border-radius: 5px;
+    border-radius: 100px;
 }
 
-.white {
-    color: whitesmoke;
+.black {
+    color: #090cc8;
 }
 
-.red {
-    color: rgb(182, 5, 5);
+.yellow {
+    color: #ffff00;
 }
 
-.purple {
-    color: rgb(178, 91, 250);
+.blue {
+    color: #00ffff;
 }
 
 .spinner {
